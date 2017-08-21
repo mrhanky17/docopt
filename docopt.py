@@ -486,6 +486,12 @@ class Dict(dict):
     def __repr__(self):
         return '{%s}' % ',\n '.join('%r: %r' % i for i in sorted(self.items()))
 
+    def get(self, key, default=None):
+        value = super().get(key, default)
+        if value is None and default is not None:
+            value = default
+        return value
+
 
 def docopt(doc, argv=None, help=True, version=None, options_first=False):
     """Parse `argv` based on command-line interface described in `doc`.

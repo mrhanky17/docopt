@@ -488,7 +488,7 @@ class Dict(dict):
 
     def get(self, key, default=None):
         value = super().get(key, default)
-        if value is None and default is not None:
+        if not value and default is not None:
             value = default
         return value
 
